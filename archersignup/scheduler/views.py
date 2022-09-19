@@ -1,12 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import Http404, HttpResponse
 from .forms import OfferForm
+from .models import Offer
 
-# Create your views here.
+def home(request):
+    return HttpResponse('Home') 
+
+def all_signups(request):
+    signup_list = Offer.objects.all()
+    return render(request, 'scheduler/all_signups.html', {'signup_list': signup_list})
+    
 def signUp(request):
-    form = OfferForm()
-    return render(request, 'scheduler/test.html', {'form':form})
-    # if response.method == 'POST':
-    #     form = DateInput(response.post)
-    #     if form.is_valid():
-    #         form.save()
-    #     return render(response, 'standing/scheduler.html')
+    if request.POST:
+        form = OfferForm(request.POST)
+        #print(request.POST)
+        if form.is_valid:
+            form.save()
+        return redirect(home)
+    return render(request, 'scheduler/test.html', {'form': OfferForm})
+    
