@@ -15,7 +15,9 @@ def signUp(request):
         form = OfferForm(request.POST)
         #print(request.POST)
         if form.is_valid:
+            for object in Offer.objects.all():
+                print(object)
             form.save()
-        return redirect(home)
+        return redirect(all_signups)
     return render(request, 'scheduler/test.html', {'form': OfferForm})
     

@@ -5,7 +5,7 @@
 <h1>All Signups</h1>
 <ul>
 {% for signup in signup_list %}
-    <li> {{ signup.Pick_Day }} </li>
+    <li> {{ signup.Pick_Day }} <p> {{ signup.Pick_Time }} </p></li>
     
     {% endfor %}
 
