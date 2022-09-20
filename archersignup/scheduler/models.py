@@ -5,11 +5,12 @@ from django.utils import timezone
 TIME_SLOTS = (
     ('9:30-9:40', '9:30-9:40'),
     ('9:40-9:50', '9:40-9:50'),
-    ('9:50-9:55', '9:50-9:55'),
+    ('9:50-10:00', '9:50-10:00'),
 )
 
 
-class Offer(models.Model):
+class signup(models.Model):
     Pick_Day = models.DateField(null=True)
-    Pick_Time = models.CharField(max_length=9, choices=TIME_SLOTS, default='9:30-9:40')
+    Pick_Time = models.CharField(max_length=10, choices=TIME_SLOTS, default='9:30-9:40')
+    Name = models.CharField(max_length=15)
     
