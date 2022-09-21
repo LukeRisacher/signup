@@ -14,3 +14,6 @@ class signup(models.Model):
     Pick_Time = models.CharField(max_length=10, choices=TIME_SLOTS, default='9:30-9:40')
     Name = models.CharField(max_length=15)
     
+    def __str__(self):
+        return(self.Name, str(self.Pick_Day) + ': ' + str(self.Pick_Time))
+    
