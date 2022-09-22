@@ -3,45 +3,87 @@
 {% block content %}
 
 <h1>All Signups</h1>
-<ul>
-{% for signup in signup_list %}
-    <li> {{ signup.Pick_Day }} <p> {{ signup.Pick_Time }} </p> <p> {{ signup.Name }} </p></li>
-    
-    {% endfor %}
-
-</ul>
 <style>
     table, th, td {
       border:1px solid black;
     }
     table {
         text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+        position: fixed;
+        bottom: 20vh;
+        left: 50%;
+        transform: translateX(-50%);
     }
     td {
         height: 50vh;
         width:auto;
     }
+    li {
+        list-style-type: none;
+        width: 80%;
+        background-color: rgb(104, 214, 248, 0.3);
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 15vh;
+    }
+
 </style>
-<table style="table-layout: fixed; width: 80%;">
+<table style="table-layout: fixed; width: 90%;">
     <tr>
-        <th>Sunday</th>
         <th>Monday</th>
         <th>Tuesday</th>
         <th>Wednesday</th>
         <th>Thursday</th>
         <th>Friday</th>
-        <th>Saturday</th>
+    
     </tr>
     <tr>
-        <td id="sunday">Test</td>
-        <td id="monday">Test</td>
-        <td id="tuesday">Test</tdid>
-        <td id="wednesday">Test</td>
-        <td id="thursday">Test</td>
-        <td id="friday">Test</td>
-        <td id="saturday">Test</td>
+        <td id="mon">
+            {% for test, details in displaydays.mon  %}
+            <li> 
+                {{ details }}, {{ test }}
+            </li>
+            {% endfor %}
+        </td>
+        <td id="tue">
+            {% for test, details in displaydays.tue  %}
+                <li> 
+                    {{ details }}, {{ test }}
+
+                </li>
+                {% endfor %}
+        </td>
+        <td id="wed">
+                {% for test, details in displaydays.wed  %}
+                <li> 
+                    {{ details }}, {{ test }}
+                </li>
+                {% endfor %}
+        </td>
+        <td id="thu">
+            {% for test, details in displaydays.thu  %}
+                <li> 
+                    {{ details }}, {{ test }}
+
+                </li>
+                {% endfor %}
+        </td>
+        <td id="fri">
+            {% for test, details in displaydays.fri  %}
+                <li> 
+                    {{ details }}, {{ test }}
+
+                </li>
+                {% endfor %}
+        </td>
     </tr>
 </table>
+
 {% endblock %}

@@ -15,13 +15,9 @@
     {% include 'scheduler/messages.html' %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-    console.log('main')
-    console.log($('#msg').length)
     setTimeout(function(){
-        console.log('hello')
         if ($('#msg').length > 0) {
             $('#msg').remove();
-            console.log('test')
         }
     }, 2000)
 </script>
