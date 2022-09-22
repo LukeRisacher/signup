@@ -2,10 +2,15 @@
 
 {% block content %}
 
-<h1>All Signups</h1>
 <style>
     table, th, td {
-      border:1px solid black;
+      border:1px solid #393D3F;
+    }
+    caption {
+        caption-side: top;
+        text-align: center;
+        color: black;
+        font-size: 42px;
     }
     table {
         text-align: center;
@@ -14,14 +19,20 @@
         left: 50%;
         transform: translateX(-50%);
     }
+    th {
+        padding: 20px;
+        font-size: 20px;
+    }
     td {
         height: 50vh;
         width:auto;
     }
     li {
+        font-weight: 700;
         list-style-type: none;
         width: 80%;
-        background-color: rgb(104, 214, 248, 0.3);
+        background-color: #71A1C1;
+        color: white;
         padding: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -31,17 +42,17 @@
     }
     h1 {
         text-align: center;
-        margin-top: 15vh;
     }
 
 </style>
 <table style="table-layout: fixed; width: 90%;">
+    <caption>All Signups</caption>
     <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
+        <th>Monday {{ WeeksDates.mon }}</th>
+        <th>Tuesday {{ WeeksDates.tue }}</th>
+        <th>Wednesday {{ WeeksDates.wed }}</th>
+        <th>Thursday {{ WeeksDates.thu }}</th>
+        <th>Friday {{ WeeksDates.fri }}</th>
     
     </tr>
     <tr>
@@ -85,5 +96,11 @@
         </td>
     </tr>
 </table>
+<script>
+    window.onload = function() {
+        let navLink = document.getElementById('all_signups')
+        navLink.classList.add('active')
+    }
+</script>
 
 {% endblock %}

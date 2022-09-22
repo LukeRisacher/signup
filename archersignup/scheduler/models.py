@@ -3,15 +3,14 @@ from django.db import models
 from django.utils import timezone
 
 TIME_SLOTS = (
-    ('9:30-9:40', '9:30-9:40'),
-    ('9:40-9:50', '9:40-9:50'),
-    ('9:50-10:00', '9:50-10:00'),
+    ('7:30-8:00', '7:30-8:00 (Before School)'),
+    ('9:30-10:00', '9:30-10:00 (Archers)'),
 )
 
 
 class signup(models.Model):
     Pick_Day = models.DateField(null=True)
-    Pick_Time = models.CharField(max_length=10, choices=TIME_SLOTS, default='9:30-9:40')
+    Pick_Time = models.CharField(max_length=25, choices=TIME_SLOTS, default='9:30-10:00')
     Name = models.CharField(max_length=15)
     
     # def __str__(self):
