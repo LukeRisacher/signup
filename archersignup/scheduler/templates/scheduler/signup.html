@@ -1,10 +1,53 @@
 {% extends 'scheduler/base.html' %}
 
 {% block content %}
+<div class="container">
 <form action="" enctype="multipart/form-data" method="POST">
     {% csrf_token %}  
     {{ form }}
-    <input type="submit" name="submit" value="Submit">
-    </form>
+    <input type="submit" name="submit" value="Submit" id="submit">
+</form>
+</div>
     
+    <style>
+        html, body {
+            height:100%;
+            width:100%;
+            margin:0;
+        }
+        body {
+            display: flex;
+        }
+        .container {
+            margin: auto;
+            width: 30%;
+        }
+        form {
+            background-color: rgb(57, 60, 78);
+            padding: 40px;
+            border-radius: 20px;
+            
+        }
+        label {
+            font-size: large;
+            display: block;
+            color: white;
+        }
+        input, select {
+            display: block;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+        input:not([type="submit"]), select {
+            width: 100%;
+        }
+        #submit {
+            background-color: white;
+            padding: 10px;
+        }
+    </style>
 {% endblock %}
+
