@@ -43,8 +43,11 @@ def regpage(request):
                 if x > 2:
                     messages.warning(request, 'The selected time slot is already filled.')
             if x <= 2:
-                print(dayweek, request.POST.get('Pick_Time'))    
-                if dayweek == 4 and request.POST.get('Pick_Time') == '9:30-10:00':
+                if dayweek == 5:
+                    messages.warning(request, 'Cannot schedule on weekends') 
+                elif dayweek == 6:
+                    messages.warning(request, 'Cannot schedule on weekends') 
+                elif dayweek == 4 and request.POST.get('Pick_Time') == '9:30-10:00':
                     messages.warning(request, 'Archers not available on Monday or Friday.')
                 elif dayweek == 0 and request.POST.get('Pick_Time') == '9:30-10:00':
                     messages.warning(request, 'Archers not available on Monday or Friday.' )
