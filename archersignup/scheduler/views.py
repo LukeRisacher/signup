@@ -44,11 +44,13 @@ def regpage(request):
                     messages.warning(request, 'The selected time slot is already filled.')
             if x <= 2:
                 print(dayweek, request.POST.get('Pick_Time'))    
-                if (dayweek != 4 and 0) or (request.POST.get('Pick_Time') != '9:30-10:00'):
-                    form.save()
-                    return redirect(all_signups)
+                if dayweek == 4 and request.POST.get('Pick_Time') == '9:30-10:00':
+                    messages.warning(request, 'Archers not available on Monday or Friday.')
+                elif dayweek == 0 and request.POST.get('Pick_Time') == '9:30-10:00':
+                    messages.warning(request, 'Archers not available on Monday or Friday.' )
                 else:
-                    messages.warning(request, 'Archers not available on Monday or Friday.')   
+                    form.save()
+                    return redirect(all_signups)  
         return HttpResponseRedirect("/")
     return render(request, 'scheduler/signup.html', {'form': SignUpForm})
     
