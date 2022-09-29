@@ -3,3 +3,4 @@
 - Then do: source env/bin/activate
 - To install requirements do: pip install -r requirements.txt
 - Also run: python3 manage.py migrate --run-syncdb
+- To run server: python3 manage.py runserver
