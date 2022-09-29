@@ -1,16 +1,13 @@
-import re
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse, HttpResponseRedirect
-from django import forms
 from .forms import SignUpForm
 from .models import signup
 from django.contrib import messages
 import datetime as dt
-import json
 from .dayFormat import get_day_value
 from .dayFormat import dateFinder
 
-def home(request):
+def home():
     return HttpResponse('Home') 
 
 def all_signups(request):
@@ -39,18 +36,12 @@ def regpage(request):
             for object in signup_list:
                 if request.POST['Pick_Day'] == str(object.Pick_Day) and request.POST['Pick_Time'] == str(object.Pick_Time):
                     x += 1
-                    
                 if x > 2:
                     messages.warning(request, 'The selected time slot is already filled.')
+                    break
             if x <= 2:
-                if dayweek == 5:
-                    messages.warning(request, 'Cannot schedule on weekends') 
-                elif dayweek == 6:
-                    messages.warning(request, 'Cannot schedule on weekends') 
-                elif dayweek == 4 and request.POST.get('Pick_Time') == '9:30-10:00':
-                    messages.warning(request, 'Archers not available on Monday or Friday.')
-                elif dayweek == 0 and request.POST.get('Pick_Time') == '9:30-10:00':
-                    messages.warning(request, 'Archers not available on Monday or Friday.' )
+                if dayweek == 5 or dayweek == 6 or (dayweek == 4 and request.POST.get('Pick_Time') == '9:30-10:00') or (dayweek == 0 and request.POST.get('Pick_Time') == '9:30-10:00'):
+                    messages.warning(request, 'Archers period not available Friday-Monday')
                 else:
                     form.save()
                     return redirect(all_signups)  
