@@ -56,6 +56,18 @@
             background-color: #71A1C1;
             color: white;
         }
+        a {
+            color: #71A1C1;
+        }
+        footer {
+            position: absolute;
+            bottom: 2vh;
+            background-color: blue;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
     </style>
     <title>{% block title%} {% endblock%}</title>
 </head>
@@ -64,12 +76,16 @@
         <a href="/" id="signup">Signup</a>
         <a href="/all_signups" id="all_signups">Calendar</a>
         <a href="/admin" style="float: right;">Admin</a>
+        <a id="feed" style="float: right;">Feed</a>
       </nav>
     {% block content %}
     {% endblock %}
     {% include 'scheduler/messages.html' %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
+    let url = 'http://' + window.location.host + '/feed';
+    document.getElementById('feed').href = url
+    console.log(url)
     setTimeout(function(){
         if ($('#msg').length > 0) {
             $('#msg').remove();
