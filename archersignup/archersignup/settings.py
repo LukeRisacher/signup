@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-r52%$^u!ih2mbv*s_6-^#ayl3e#bls$(_&e1a7z!$99lk*+)0(
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                 'localhost',]
+                 'localhost',
+                 'bookjeff.gctaa.net',]
 
 
 # Application definition
