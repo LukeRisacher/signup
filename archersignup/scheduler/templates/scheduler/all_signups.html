@@ -1,7 +1,7 @@
 {% extends 'scheduler/base.html' %}
 {% block title%} Calendar {% endblock %}
 {% block content %}
-
+<!---->
 <style>
     table, th, td {
       border:1px solid #393D3F;
@@ -43,16 +43,47 @@
     h1 {
         text-align: center;
     }
+    #small {
+        display: none;
+    }
+    #large {
+        display: inline;
+    }
+    @media only screen and (max-width: 900px) {
+        #large {
+            display: none;
+        }
+        #small {
+            display: inline;
+        }
+    }
+    @media only screen and (max-width: 690px) {
+        table {
+            bottom: 10vh;
+        }
+    }
 
+    @media only screen and (max-width: 600px) {
+        table {
+            bottom: 8vh;
+        }
+    }
+
+    @media only screen and (max-width: 555px) {
+        #small {
+            display: block;
+            margin-bottom: 0px;
+        }
+    }
 </style>
 <table style="table-layout: fixed; width: 90%;">
     <caption>All Signups</caption>
     <tr>
-        <th>Monday {{ WeeksDates.mon }}</th>
-        <th>Tuesday {{ WeeksDates.tue }}</th>
-        <th>Wednesday {{ WeeksDates.wed }}</th>
-        <th>Thursday {{ WeeksDates.thu }}</th>
-        <th>Friday {{ WeeksDates.fri }}</th>
+        <th><p id="large">Monday</p><p id="small">Mon</p> {{ WeeksDates.mon }}</th>
+        <th><p id="large">Tuesday</p><p id="small">Tue</p> {{ WeeksDates.tue }}</th>
+        <th><p id="large">Wednesday</p><p id="small">Wed</p> {{ WeeksDates.wed }}</th>
+        <th><p id="large">Thursday</p><p id="small">Thur</p> {{ WeeksDates.thu }}</th>
+        <th><p id="large">Friday</p><p id="small">Fri</p> {{ WeeksDates.fri }}</th>
     
     </tr>
     <tr>

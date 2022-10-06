@@ -34,6 +34,10 @@ def regpage(request):
         if form.is_valid:
             x = 0
             for object in signup_list:
+                today = dt.date.today()
+                today_week = today.isocalendar().week
+                if object.Pick_Day.isocalendar().week < today_week:
+                    object.delete()
                 if request.POST['Pick_Day'] == str(object.Pick_Day) and request.POST['Pick_Time'] == str(object.Pick_Time):
                     x += 1
                 if x > 2:
@@ -42,6 +46,8 @@ def regpage(request):
             if x <= 2:
                 if dayweek == 5 or dayweek == 6 or (dayweek == 4 and request.POST.get('Pick_Time') == '9:30-10:00') or (dayweek == 0 and request.POST.get('Pick_Time') == '9:30-10:00'):
                     messages.warning(request, 'Archers period not available Friday-Monday')
+                elif dt.datetime.strptime(request.POST['Pick_Day'], "%Y-%m-%d").isocalendar().week < today_week:
+                    messages.warning(request, 'Cannot signup for previous weeks')
                 else:
                     form.save()
                     return redirect(all_signups)  
