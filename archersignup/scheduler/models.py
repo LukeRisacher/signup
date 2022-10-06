@@ -16,6 +16,6 @@ class signup(models.Model):
         return f"/all_signups"
     
     
-    # def __str__(self):
-    #     return(self.Name, str(self.Pick_Day) + ': ' + str(self.Pick_Time))
+    def __str__(self):
+        return(f'{self.Name}: {self.Pick_Day}, {self.Pick_Time}')
     
