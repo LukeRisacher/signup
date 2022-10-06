@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
                  'bookjeff.gctaa.net',]
+CSRF_TRUSTED_ORGINS = ['https://bookjeff.gctaa.net/']
 
 
 # Application definition
