@@ -31,11 +31,11 @@ def regpage(request):
         dayweek = dt.date(int(request.POST.get('Pick_Day')[0:4]), int(request.POST.get('Pick_Day')[5:7]), int(request.POST.get('Pick_Day')[8:10])).weekday()
         form = SignUpForm(request.POST)
         signup_list = signup.objects.all()
+        today = dt.date.today()
+        today_week = today.isocalendar().week
         if form.is_valid:
             x = 0
             for object in signup_list:
-                today = dt.date.today()
-                today_week = today.isocalendar().week
                 if object.Pick_Day.isocalendar().week < today_week:
                     object.delete()
                 if request.POST['Pick_Day'] == str(object.Pick_Day) and request.POST['Pick_Time'] == str(object.Pick_Time):
